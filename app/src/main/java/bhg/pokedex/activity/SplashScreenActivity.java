@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.ProgressBar;
 
 import bhg.pokedex.R;
+import bhg.pokedex.util.FirebaseInstance;
 
 public class SplashScreenActivity extends AppCompatActivity {
 
@@ -20,6 +21,7 @@ public class SplashScreenActivity extends AppCompatActivity {
 
         new Thread(new Runnable() {
             public void run() {
+                FirebaseInstance.getInstance();
                 doProgress();
                 startApp();
                 finish();
