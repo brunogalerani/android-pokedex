@@ -51,6 +51,8 @@ public class PokemonListAdapter extends RecyclerView.Adapter<PokemonListAdapter.
                 .transition(withCrossFade())
                 .apply(RequestOptions.diskCacheStrategyOf(DiskCacheStrategy.ALL))
                 .into(holder.pokemonPicImageView);
+        holder.type1ImageView.setImageResource(R.drawable.type_fire);
+        holder.type2ImageView.setImageResource(R.drawable.type_electric);
     }
 
     @Override
@@ -67,12 +69,16 @@ public class PokemonListAdapter extends RecyclerView.Adapter<PokemonListAdapter.
 
         protected ImageView pokemonPicImageView;
         protected TextView pokemonNameTextView;
+        protected ImageView type1ImageView;
+        protected ImageView type2ImageView;
 
         public ViewHolder(View itemView) {
             super(itemView);
 
             pokemonPicImageView = (ImageView) itemView.findViewById(R.id.pokemonPicImageView);
             pokemonNameTextView = (TextView) itemView.findViewById(R.id.textViewPokemonName);
+            type1ImageView = (ImageView) itemView.findViewById(R.id.type1ImageView);
+            type2ImageView = (ImageView) itemView.findViewById(R.id.type2ImageView);
         }
     }
 }
