@@ -1,6 +1,7 @@
 package bhg.pokedex.adapter;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -51,8 +52,19 @@ public class PokemonListAdapter extends RecyclerView.Adapter<PokemonListAdapter.
                 .transition(withCrossFade())
                 .apply(RequestOptions.diskCacheStrategyOf(DiskCacheStrategy.ALL))
                 .into(holder.pokemonPicImageView);
-        holder.type1ImageView.setImageResource(R.drawable.type_fire);
-        holder.type2ImageView.setImageResource(R.drawable.type_electric);
+
+        Resources resources = context.getResources();
+        String type1Name = pokemon.getTypes().get(0).getName();
+        int idType1 = resources.getIdentifier("type_" + type1Name, "drawable", context.getPackageName());
+        if(pokemon.getTypes().size() != 1){
+            String type2Name = pokemon.getTypes().get(1).getName();
+            int idType2 = resources.getIdentifier("type_" + type2Name, "drawable", context.getPackageName());
+            holder.type1ImageView.setImageResource(idType2);
+            holder.type2ImageView.setImageResource(idType1);
+        }else{
+            holder.type1ImageView.setImageResource(idType1);
+            holder.type2ImageView.setImageResource(android.R.color.transparent);
+        }
     }
 
     @Override
