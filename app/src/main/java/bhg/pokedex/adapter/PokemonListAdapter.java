@@ -1,6 +1,7 @@
 package bhg.pokedex.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -17,6 +18,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import bhg.pokedex.R;
+import bhg.pokedex.activity.MainActivity;
+import bhg.pokedex.activity.PokemonInfo;
 import bhg.pokedex.model.Pokemon;
 import bhg.pokedex.util.FirebaseInstance;
 
@@ -43,8 +46,8 @@ public class PokemonListAdapter extends RecyclerView.Adapter<PokemonListAdapter.
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
-        Pokemon pokemon = pokemonList.get(position);
+    public void onBindViewHolder(ViewHolder holder, final int position) {
+        final Pokemon pokemon = pokemonList.get(position);
         holder.pokemonNameTextView.setText(pokemon.getName());
         Glide.with(context)
                 .load(FirebaseInstance.getInstance().getUrlToImage(position + 1))
@@ -65,6 +68,15 @@ public class PokemonListAdapter extends RecyclerView.Adapter<PokemonListAdapter.
             holder.type1ImageView.setImageResource(idType1);
             holder.type2ImageView.setImageResource(android.R.color.transparent);
         }
+
+        holder.pokemonPicImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, PokemonInfo.class);
+                intent.putExtra("index", position);
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override
