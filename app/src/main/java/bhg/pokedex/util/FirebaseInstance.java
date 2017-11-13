@@ -46,7 +46,14 @@ public class FirebaseInstance {
         return pokemonList;
     }
 
-    public String getUrlToImage(int id) {
+    public String getUrlToImage(String name) {
+        int id = 1;
+        for (int i = 0; i < pokemonList.size(); i++) {
+            if (pokemonList.get(i).getName().equals(name)) {
+                id += i;
+                break;
+            }
+        }
         return "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/" + id + ".png";
     }
 
@@ -74,5 +81,14 @@ public class FirebaseInstance {
             firebaseInstance.loadDataFromFireBase();
         }
         return firebaseInstance;
+    }
+
+    public Pokemon getPokemon(String pokemonName) {
+        for (Pokemon pokemon : pokemonList) {
+            if (pokemon.getName().equals(pokemonName)) {
+                return pokemon;
+            }
+        }
+        return pokemonList.get(0);
     }
 }

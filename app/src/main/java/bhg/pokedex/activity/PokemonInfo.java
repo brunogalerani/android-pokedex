@@ -15,8 +15,8 @@ public class PokemonInfo extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pokemon_info);
-        int pokemonId = getIntent().getIntExtra("index", 0);
+        String pokemonName = getIntent().getStringExtra("name");
         textViewPokemonName = findViewById(R.id.textViewPokemonName);
-        textViewPokemonName.setText(FirebaseInstance.getInstance().getPokemonList().get(pokemonId).getName());
+        textViewPokemonName.setText(FirebaseInstance.getInstance().getPokemon(pokemonName).getName());
     }
 }

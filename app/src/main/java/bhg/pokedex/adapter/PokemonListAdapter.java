@@ -15,6 +15,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import bhg.pokedex.R;
@@ -50,7 +51,7 @@ public class PokemonListAdapter extends RecyclerView.Adapter<PokemonListAdapter.
         final Pokemon pokemon = pokemonList.get(position);
         holder.pokemonNameTextView.setText(pokemon.getName());
         Glide.with(context)
-                .load(FirebaseInstance.getInstance().getUrlToImage(position + 1))
+                .load(FirebaseInstance.getInstance().getUrlToImage(pokemon.getName()))
                 .apply(RequestOptions.centerCropTransform())
                 .transition(withCrossFade())
                 .apply(RequestOptions.diskCacheStrategyOf(DiskCacheStrategy.ALL))
@@ -73,7 +74,7 @@ public class PokemonListAdapter extends RecyclerView.Adapter<PokemonListAdapter.
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, PokemonInfo.class);
-                intent.putExtra("index", position);
+                intent.putExtra("name", pokemon.getName());
                 context.startActivity(intent);
             }
         });
@@ -86,6 +87,13 @@ public class PokemonListAdapter extends RecyclerView.Adapter<PokemonListAdapter.
 
     public void setPokemonList(List<Pokemon> pokemonList) {
         this.pokemonList.addAll(pokemonList);
+        notifyDataSetChanged();
+    }
+
+    public void setFilter(ArrayList<Pokemon> newList){
+        //we have used hashmap,  find how to use it here
+        pokemonList = new ArrayList<Pokemon>();
+        pokemonList.addAll(newList);
         notifyDataSetChanged();
     }
 
