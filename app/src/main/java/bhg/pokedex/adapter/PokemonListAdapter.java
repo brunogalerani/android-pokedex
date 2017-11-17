@@ -15,11 +15,9 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 import bhg.pokedex.R;
-import bhg.pokedex.activity.MainActivity;
 import bhg.pokedex.activity.PokemonInfo;
 import bhg.pokedex.model.Pokemon;
 import bhg.pokedex.util.FirebaseInstance;
@@ -60,12 +58,12 @@ public class PokemonListAdapter extends RecyclerView.Adapter<PokemonListAdapter.
         Resources resources = context.getResources();
         String type1Name = pokemon.getTypes().get(0).getName();
         int idType1 = resources.getIdentifier("type_" + type1Name, "drawable", context.getPackageName());
-        if(pokemon.getTypes().size() != 1){
+        if (pokemon.getTypes().size() != 1) {
             String type2Name = pokemon.getTypes().get(1).getName();
             int idType2 = resources.getIdentifier("type_" + type2Name, "drawable", context.getPackageName());
             holder.type1ImageView.setImageResource(idType2);
             holder.type2ImageView.setImageResource(idType1);
-        }else{
+        } else {
             holder.type1ImageView.setImageResource(idType1);
             holder.type2ImageView.setImageResource(android.R.color.transparent);
         }
@@ -90,7 +88,7 @@ public class PokemonListAdapter extends RecyclerView.Adapter<PokemonListAdapter.
         notifyDataSetChanged();
     }
 
-    public void setFilter(ArrayList<Pokemon> newList){
+    public void setFilter(ArrayList<Pokemon> newList) {
         //we have used hashmap,  find how to use it here
         pokemonList = new ArrayList<Pokemon>();
         pokemonList.addAll(newList);

@@ -1,29 +1,13 @@
 package bhg.pokedex.activity;
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.graphics.Color;
-import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.RequiresApi;
 import android.support.v4.view.MenuItemCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
-import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewAnimationUtils;
-import android.widget.AutoCompleteTextView;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 
 import bhg.pokedex.R;
@@ -31,7 +15,7 @@ import bhg.pokedex.adapter.PokemonListAdapter;
 import bhg.pokedex.model.Pokemon;
 import bhg.pokedex.util.FirebaseInstance;
 
-public class MainActivity extends AppCompatActivity implements SearchView.OnQueryTextListener {
+public class MainActivity extends MenuActivity implements SearchView.OnQueryTextListener {
 
     ArrayList<Pokemon> arrayList = FirebaseInstance.getInstance().getPokemonList();
     private RecyclerView recyclerView;
@@ -56,6 +40,7 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        super.onCreateOptionsMenu(menu);
         getMenuInflater().inflate(R.menu.main_menu, menu);
 
         final MenuItem searchItem = menu.findItem(R.id.action_filter_search);
