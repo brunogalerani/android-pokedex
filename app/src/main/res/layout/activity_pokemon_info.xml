@@ -4,12 +4,167 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="20dp"
     tools:context="bhg.pokedex.activity.PokemonInfo">
 
+
+    <ImageView
+        android:id="@+id/pokemonInfoImageView"
+        android:layout_width="@dimen/pokeInfoPicWidth"
+        android:layout_height="140dp"
+        android:layout_marginBottom="5dp" />
+
     <TextView
-        android:id="@+id/textViewPokemonName"
+        android:id="@+id/pokemonDescriptionTextView"
+        android:layout_width="match_parent"
+        android:layout_height="185dp"
+        android:layout_toRightOf="@id/pokemonInfoImageView"
+        android:fadeScrollbars="false"
+        android:maxLines="10"
+        android:scrollbars="vertical" />
+
+    <LinearLayout
+        android:id="@+id/linearLayoutTypes"
+        android:layout_width="@dimen/pokeInfoPicWidth"
+        android:layout_height="25dp"
+        android:layout_below="@id/pokemonInfoImageView"
+        android:orientation="horizontal"
+        android:padding="2dp">
+
+        <ImageView
+            android:id="@+id/type1ImageView"
+            android:layout_width="60dp"
+            android:layout_height="20dp" />
+
+        <ImageView
+            android:id="@+id/type2ImageView"
+            android:layout_width="60dp"
+            android:layout_height="20dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayoutInfos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linearLayoutTypes"
+        android:layout_marginTop="@dimen/marginInfoView"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/heightTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/height" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/widthTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/weight" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/abilityTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center" />
+        android:layout_below="@id/linearLayoutInfos"
+        android:layout_marginBottom="@dimen/marginInfoView"
+        android:layout_marginTop="@dimen/marginInfoView"
+        android:text="@string/abilities" />
+
+    <TextView
+        android:id="@+id/titleStatsTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/abilityTitle"
+        android:text="@string/stats" />
+
+    <RelativeLayout
+        android:id="@+id/top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/titleStatsTextView"
+        android:layout_marginTop="@dimen/pokeInfoMarginStats"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/center_point"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_centerInParent="true"
+            android:orientation="horizontal" />
+
+        <LinearLayout
+            android:id="@+id/left_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignRight="@+id/center_point"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/hpTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/hp" />
+
+            <TextView
+                android:id="@+id/atckTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/pokeInfoMarginStats"
+                android:text="@string/attack" />
+
+            <TextView
+                android:id="@+id/defTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/pokeInfoMarginStats"
+                android:text="@string/defense" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/leftLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/center_point"
+            android:layout_alignParentRight="true"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/speedTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/speed" />
+
+            <TextView
+                android:id="@+id/spatckTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/pokeInfoMarginStats"
+                android:text="@string/spattack" />
+
+            <TextView
+                android:id="@+id/spdefTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/pokeInfoMarginStats"
+                android:text="@string/spdeffense" />
+        </LinearLayout>
+    </RelativeLayout>
+
 
 </RelativeLayout>

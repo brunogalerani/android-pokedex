@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="marginInfoView">25dp</dimen>
+    <dimen name="pokeInfoPicWidth">145dp</dimen>
+    <dimen name="pokeInfoMarginStats">3dp</dimen>
+</resources>
