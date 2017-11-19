@@ -1,5 +1,6 @@
 package bhg.pokedex.activity;
 
+import android.app.ActivityManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -8,13 +9,15 @@ import android.view.MenuItem;
 import android.view.SubMenu;
 import android.widget.Toast;
 
+import java.util.List;
+
 public class MenuActivity extends AppCompatActivity {
 
     protected static final int POKEDEX = 1;
-    protected static final int QUIZES = 2;
-    protected static final int QUIZ1 = 21;
-    protected static final int QUIZ2 = 22;
-    protected static final int QUIZ3 = 23;
+    protected static final int MORE = 2;
+    protected static final int QUIZ = 21;
+    protected static final int SCORES = 22;
+    protected static final int ABOUT = 23;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,37 +28,48 @@ public class MenuActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         menu.add(0, POKEDEX, 0, "Pokédex");
 
-        SubMenu sub = menu.addSubMenu(0, 0, QUIZES, "Quizes");
-        sub.add(0, QUIZ1, 0, "Quiz 1");
-        sub.add(0, QUIZ2, 1, "Quiz 2");
-        sub.add(0, QUIZ3, 2, "Quiz 3");
+        SubMenu sub = menu.addSubMenu(0, 0, MORE, "More");
+        sub.add(0, QUIZ, 0, "Quiz");
+        sub.add(0, SCORES, 1, "Scores");
+        sub.add(0, ABOUT, 2, "About");
         return true;
 
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int i = item.getItemId();
-        Intent intent;
         switch (i) {
             case POKEDEX:
-                Toast.makeText(this, "Funcionalidade ainda não implementada!", Toast.LENGTH_SHORT).show();
+                changeActivity(new Intent(this, MainActivity.class), MainActivity.class.getName());
                 break;
-            case QUIZ1:
+            case QUIZ:
                 //Redirecionar para Quiz1
-                Toast.makeText(this, "Funcionalidade ainda não implementada!", Toast.LENGTH_SHORT).show();
+                changeActivity(new Intent(this, QuizActivity.class), QuizActivity.class.getName());
                 break;
-            case QUIZ2:
+            case SCORES:
                 //Redirecionar para Quiz2
                 Toast.makeText(this, "Funcionalidade ainda não implementada!", Toast.LENGTH_SHORT).show();
                 break;
-            case QUIZ3:
+            case ABOUT:
                 //Redicrecionar para quiz3
                 Toast.makeText(this, "Funcionalidade ainda não implementada!", Toast.LENGTH_SHORT).show();
                 break;
         }
         return false;
 
+    }
+
+    private void changeActivity(Intent intent, String className){
+
+        ActivityManager mngr = (ActivityManager) getSystemService(ACTIVITY_SERVICE);
+        List<ActivityManager.RunningTaskInfo> taskList = mngr.getRunningTasks(10);
+
+        if (!taskList.get(0).topActivity.getClassName().equals(className)) {
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+        }
     }
 }
 

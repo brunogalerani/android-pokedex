@@ -88,9 +88,9 @@ public class PokemonInfo extends MenuActivity {
         weightTextView.setText(weight);
         heightTextView.setText(height);
 
-        StringBuilder abilities = new StringBuilder(abilitiesTextView.getText().toString() + " /");
+        StringBuilder abilities = new StringBuilder(abilitiesTextView.getText().toString() + " ");
         for (Abilities ability : pokemon.getAbilities()) {
-            abilities.append(ability.getName()).append(" / ");
+            abilities.append(ability.getName()).append("  ");
         }
         abilitiesTextView.setText(abilities.toString());
 

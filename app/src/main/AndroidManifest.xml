@@ -22,7 +22,10 @@
         <activity
             android:name=".activity.PokemonInfo"
             android:theme="@style/AppThemeAction" />
-        <activity android:name=".activity.MenuActivity"></activity>
+        <activity android:name=".activity.MenuActivity" />
+        <activity
+            android:name=".activity.QuizActivity"
+            android:theme="@style/AppThemeAction"></activity>
     </application>
 
 </manifest>
