@@ -49,8 +49,8 @@ public class MenuActivity extends AppCompatActivity {
                 changeActivity(new Intent(this, QuizActivity.class), QuizActivity.class.getName());
                 break;
             case SCORES:
-                //Redirecionar para Quiz2
-                Toast.makeText(this, "Funcionalidade ainda não implementada!", Toast.LENGTH_SHORT).show();
+                //Redirecionar para Score
+                changeActivity(new Intent(this, ScoreActivity.class), ScoreActivity.class.getName());
                 break;
             case ABOUT:
                 //Redicrecionar para quiz3

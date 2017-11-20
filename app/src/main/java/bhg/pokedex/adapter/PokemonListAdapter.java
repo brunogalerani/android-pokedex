@@ -3,6 +3,7 @@ package bhg.pokedex.adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
+import android.os.Vibrator;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -32,10 +33,12 @@ public class PokemonListAdapter extends RecyclerView.Adapter<PokemonListAdapter.
 
     private ArrayList<Pokemon> pokemonList;
     private Context context;
+    private Vibrator vibe;
 
     public PokemonListAdapter(Context context) {
         this.context = context;
         pokemonList = new ArrayList<>();
+        vibe = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
     }
 
     @Override
@@ -71,6 +74,7 @@ public class PokemonListAdapter extends RecyclerView.Adapter<PokemonListAdapter.
         holder.pokemonPicImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                vibe.vibrate(100);
                 Intent intent = new Intent(context, PokemonInfo.class);
                 intent.putExtra("name", pokemon.getName());
                 context.startActivity(intent);
