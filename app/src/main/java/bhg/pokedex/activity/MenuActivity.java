@@ -17,7 +17,6 @@ public class MenuActivity extends AppCompatActivity {
     protected static final int MORE = 2;
     protected static final int QUIZ = 21;
     protected static final int SCORES = 22;
-    protected static final int ABOUT = 23;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +30,6 @@ public class MenuActivity extends AppCompatActivity {
         SubMenu sub = menu.addSubMenu(0, 0, MORE, "More");
         sub.add(0, QUIZ, 0, "Quiz");
         sub.add(0, SCORES, 1, "Scores");
-        sub.add(0, ABOUT, 2, "About");
         return true;
 
     }
@@ -51,10 +49,6 @@ public class MenuActivity extends AppCompatActivity {
             case SCORES:
                 //Redirecionar para Score
                 changeActivity(new Intent(this, ScoreActivity.class), ScoreActivity.class.getName());
-                break;
-            case ABOUT:
-                //Redicrecionar para quiz3
-                Toast.makeText(this, "Funcionalidade ainda não implementada!", Toast.LENGTH_SHORT).show();
                 break;
         }
         return false;
