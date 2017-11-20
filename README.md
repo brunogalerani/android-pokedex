@@ -4,7 +4,7 @@ A pokédex app for android.
 This app was requisite for an Android class in IFSP College.
 
 Requirements for this app:
-- Slash screen with a progressive bar;
+- Splash screen with a progressive bar;
 - Images;
 - A menu with, at least, 2 submenus;
 - Alerts;
