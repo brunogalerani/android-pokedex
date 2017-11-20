@@ -1,7 +1,7 @@
 # android-pokedex
 A pokédex app for android.
 
-This app was requisite for an Android class in IFSP College.
+This app was created for an Android class in IFSP College.
 
 Requirements for this app:
 - Splash screen with a progressive bar;
